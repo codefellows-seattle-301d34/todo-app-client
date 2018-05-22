@@ -28,6 +28,7 @@
     "no-multi-spaces": ["warn", {"exceptions": { "VariableDeclarator": true }}],
     "no-trailing-spaces": "warn",
     "new-cap": "warn",
-    "no-redeclare": ["error", { "builtinGlobals": true }]
+    "no-redeclare": ["error", { "builtinGlobals": true }],
+    "semi": 1
   }
 }

@@ -9,11 +9,11 @@ var app = app || {};
     app.showOnly('.task-view');
 
     app.Task.all.map(task => $('#task-list').append(task.toHtml()));
-  }
+  };
 
   module.taskView = taskView;
-})(app)
+})(app);
 
 $(function() {
   app.Task.fetchAll(app.taskView.initIndexPage);
-})
+});
