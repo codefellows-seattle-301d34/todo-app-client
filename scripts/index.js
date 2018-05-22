@@ -19,8 +19,10 @@ var app = app || {};
   };
 
   module.render = (templateId, data) => {
-    let template = Handlebars.compile($(`#${templateId}`).text());
-    return template(data);
+    if (!module.taskTemplate) {
+      module.taskTemplate = Handlebars.compile($(`#${templateId}`).text());
+    }
+    return module.taskTemplate(data);
   };
 
 })(app);
