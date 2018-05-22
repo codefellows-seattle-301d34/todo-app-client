@@ -14,20 +14,20 @@ var app = app || {};
 
   Task.prototype.toHtml = function() {
     return app.render('task-template', this);
-  }
+  };
 
   Task.all = [];
 
   Task.loadAll = rows => {
     Task.all = rows.sort((a, b) => b.title - a.title).map(task => new Task(task));
-  }
+  };
 
   Task.fetchAll = callback =>
     $.get(`${app.ENVIRONMENT.apiUrl}/tasks`)
-      .then((data => Task.loadAll(data))
+      .then(data => Task.loadAll(data))
       .then(Task.loadAll)
       .then(callback)
       .catch(errorCallback);
 
   module.Task = Task;
-})(app)
+})(app);
