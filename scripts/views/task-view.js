@@ -14,6 +14,6 @@ var app = app || {};
   module.taskView = taskView;
 })(app);
 
-$(function() {
+$(document).ready(function() {
   app.Task.fetchAll(app.taskView.initIndexPage);
 });
