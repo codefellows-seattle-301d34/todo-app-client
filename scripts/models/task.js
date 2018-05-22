@@ -25,7 +25,6 @@ var app = app || {};
   Task.fetchAll = callback =>
     $.get(`${app.ENVIRONMENT.apiUrl}/tasks`)
       .then(data => Task.loadAll(data))
-      .then(Task.loadAll)
       .then(callback)
       .catch(errorCallback);
 
