@@ -6,6 +6,7 @@ var app = app || {};
   const adminView = {};
 
   adminView.initAdminPage = function() {
+    
     $('.container').hide();
     $('.admin-view').show();
     $('#admin-form').on('submit', function(event) {
@@ -22,6 +23,7 @@ var app = app || {};
   };
 
   adminView.verify = function(ctx, next) {
+    console.log(ctx);
     if(!localStorage.token) $('.admin').hide();
     else console.log('token');
     next();
