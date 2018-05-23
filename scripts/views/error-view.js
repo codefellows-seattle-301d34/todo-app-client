@@ -6,10 +6,10 @@ var app = app || {};
   const errorView = {};
 
   errorView.initErrorPage = function(err) {
-    app.showOnly('.error-view');
     $('#error-message').empty();
-    $('#error-message').append(app.render('error-template', err));
+    app.showOnly('.error-view');
+    app.render('error-template', err);
   };
 
   module.errorView = errorView;
-})(app)
+})(app);

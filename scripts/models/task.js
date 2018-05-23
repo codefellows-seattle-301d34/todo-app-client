@@ -14,19 +14,30 @@ var app = app || {};
 
   Task.prototype.toHtml = function() {
     return app.render('task-template', this);
-  };
+  }
 
   Task.all = [];
 
   Task.loadAll = rows => {
-    Task.all = rows.sort((a, b) => b.title - a.title).map(task => new Task(task));
-  };
+    Task.all = rows.map(task => new Task(task));
+  }
 
   Task.fetchAll = callback =>
     $.get(`${app.ENVIRONMENT.apiUrl}/tasks`)
-      .then(data => Task.loadAll(data))
+      .then(Task.loadAll)
       .then(callback)
       .catch(errorCallback);
+
+  Task.createTask = task =>
+    $.post(`${app.ENVIRONMENT.apiUrl}/tasks/add`, task)
+      .then(() => page('/'))
+      .catch(errorCallback);
+
+  Task.fetchOne = (ctx) => {
+    console.log(ctx);
+    $('.task-item').hide();
+    $(`.task-item[data-task-id="${ctx.params.task_id}"]`).show();
+  };
 
   module.Task = Task;
 })(app);
