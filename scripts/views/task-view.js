@@ -5,16 +5,23 @@ var app = app || {};
 (function(module) {
   const taskView = {};
 
+  function reset() {
+    $('.container').hide();
+    $('.add-link').hide();
+    $('.navigation').slideDown(350);
+  }
+
   taskView.initIndexPage = function(ctx) {
-    app.showOnly('.task-view');
-    let $taskList = $('#task-list');
-    $taskList.empty();
-    app.Task.all.forEach(task => $taskList.append(task.toHtml()));
-  };
+    reset();
+    $('.task-view').show();
+    $('#task-list').empty();
+    app.Task.all.map(task => $('#task-list').append(task.toHtml()));
+  }
 
   taskView.initAddForm = function() {
-    app.showOnly('.add-view');
-
+    reset();
+    $('.add-view').show();
+    $('.add-link').show();
     $('#add-form').on('submit', function(e) {
       e.preventDefault();
 
@@ -27,8 +34,8 @@ var app = app || {};
       };
 
       module.Task.createTask(task);
-    });
-  };
+    })
+  }
 
   module.taskView = taskView;
-})(app);
+})(app)
